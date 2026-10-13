@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101210">
+  <meta name="description" content="MAI — Martial Arts Learning. Explora disciplinas marciales, aprende sus fundamentos y crea tu plan de entrenamiento.">
+  <title>MAI — Martial Arts Learning</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<header class="topbar">
+  <a class="brand" href="#" data-view="login" aria-label="MAI, ir al inicio">
+    <span class="mark">|||</span>
+    <span>
+      <b>MAI</b>
+      <small>MARTIAL ARTS INTELLIGENCE</small>
+    </span>
+  </a>
+
+  <div class="topnote">
+    <i></i> TU CAMINO EMPIEZA AQUÍ <span>ES⌄</span>
+  </div>
+</header>
+
+<main class="shell">
+  <section class="hero">
+    <div class="vertical">DISCIPLINA · RESPETO · CONSTANCIA</div>
+
+    <div class="hero-inner">
+      <div class="eyebrow">— EL ARTE DE MEJORAR</div>
+      <h1>Forja tu<br>propio <em>camino.</em></h1>
+      <p>Explora las artes marciales, aprende de sus tradiciones y lleva tu práctica al siguiente nivel.</p>
+
+      <div class="stamp">
+        <b>道</b>
+        <small>DO</small>
+      </div>
+
+      <div class="hero-foot">
+        <span>01 / 03</span> MENTE · CUERPO · ESPÍRITU
+      </div>
+    </div>
+
+    <div class="circle"></div>
+  </section>
+
+  <section class="panel">
+    <div class="mobile-brand brand">
+      <span class="mark">|||</span>
+      <span>
+        <b>MAI</b>
+        <small>MARTIAL ARTS INTELLIGENCE</small>
+      </span>
+    </div>
+
+    <section class="view active" id="login-view">
+      <div class="eyebrow">— BIENVENIDO DE VUELTA</div>
+      <h2>Entra al <em>dojo.</em></h2>
+      <p class="sub">Continúa donde tu disciplina te dejó.</p>
+
+      <form id="login-form">
+        <label for="login-user">Nombre de usuario</label>
+
+        <div class="field">
+          <span>◎</span>
+          <input
+            id="login-user"
+            name="username"
+            autocomplete="username"
+            placeholder="Tu nombre de usuario"
+            required
+          >
+        </div>
+
+        <div class="labelrow">
+          <label for="login-pass">Contraseña</label>
+          <button type="button" class="link" id="show-pass">Mostrar</button>
+        </div>
+
+        <div class="field">
+          <span>⌑</span>
+          <input
+            id="login-pass"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            placeholder="Introduce tu contraseña"
+            required
+          >
+        </div>
+
+        <div class="error" id="login-error" role="status" aria-live="polite"></div>
+
+        <button class="primary" type="submit">
+          Iniciar sesión <span>↗</span>
+        </button>
+      </form>
+
+      <div class="separator">
+        <span></span>
+        <small>¿PRIMERA VEZ EN EL DOJO?</small>
+        <span></span>
+      </div>
+
+      <button class="secondary" type="button" data-view="register">
+        Crear una cuenta <span>＋</span>
+      </button>
+
+      <button class="guest" type="button" id="guest-login">
+        ◌ &nbsp; Explorar como invitado <span>→</span>
+      </button>
+
+      <p class="legal">Al continuar, te comprometes a practicar con respeto y responsabilidad.</p>
+    </section>
+
+    <section class="view" id="register-view">
+      <button class="back" type="button" data-view="login">← Volver al inicio de sesión</button>
+
+      <div class="eyebrow">— COMIENZA TU VIAJE</div>
+      <h2>Tu camino,<br><em>tu disciplina.</em></h2>
+      <p class="sub">Crea tu cuenta y empieza a aprender a tu ritmo.</p>
+
+      <form id="register-form">
+        <label for="reg-user">Nombre de usuario</label>
+
+        <div class="field">
+          <span>◎</span>
+          <input
+            id="reg-user"
+            name="username"
+            autocomplete="username"
+            minlength="3"
+            placeholder="Elige un nombre de usuario"
+            required
+          >
+        </div>
+
+        <label for="reg-pass">Contraseña</label>
+
+        <div class="field">
+          <span>⌑</span>
+          <input
+            id="reg-pass"
+            name="password"
+            type="password"
+            autocomplete="new-password"
+            minlength="8"
+            placeholder="Mínimo 8 caracteres"
+            required
+          >
+        </div>
+
+        <label for="reg-confirm">Confirmar contraseña</label>
+
+        <div class="field">
+          <span>⌑</span>
+          <input
+            id="reg-confirm"
+            name="password-confirm"
+            type="password"
+            autocomplete="new-password"
+            minlength="8"
+            placeholder="Repite tu contraseña"
+            required
+          >
+        </div>
+
+        <div class="error" id="register-error" role="status" aria-live="polite"></div>
+
+        <button class="primary" type="submit">
+          Crear cuenta <span>↗</span>
+        </button>
+      </form>
+
+      <div class="separator">
+        <span></span>
+        <small>¿YA TIENES CUENTA?</small>
+        <span></span>
+      </div>
+
+      <button class="secondary" type="button" data-view="login">
+        Iniciar sesión <span>↗</span>
+      </button>
+
+      <button class="guest" type="button" id="guest-register">
+        ◌ &nbsp; Explorar como invitado <span>→</span>
+      </button>
+    </section>
+
+    <section class="view" id="home-view">
+      <div class="home-top">
+        <div class="eyebrow">— TU ESPACIO DE PRÁCTICA</div>
+        <button id="logout" type="button">Salir ↗</button>
+      </div>
+
+      <div class="kicker">KONNICHIWA ✳</div>
+
+      <h2 id="home-title">Bienvenido<br>al <em>dojo.</em></h2>
+
+      <p class="sub" id="home-sub">Un paso a la vez. Cada práctica cuenta.</p>
+
+      <div class="feature reflection-card">
+        <div class="feature-top">
+          <span>01 / REFLEXIÓN</span>
+          <b>道</b>
+        </div>
+
+        <small>UNA IDEA PARA TU CAMINO</small>
+
+        <h3 id="reflection-text" aria-live="polite">
+          La disciplina se construye paso a paso.
+        </h3>
+
+        <p id="reflection-category">MENTE · CUERPO · CONSTANCIA</p>
+
+        <div class="feature-foot">
+          <span id="reflection-count">01 / 10</span>
+          <span>✳ INSPIRA TU PRÁCTICA</span>
+        </div>
+      </div>
+
+      <button
+        class="discipline-launch"
+        id="discipline-launch"
+        type="button"
+        aria-describedby="hold-hint"
+      >
+        <span class="launch-symbol">道</span>
+
+        <span class="launch-copy">
+          <small>TU SIGUIENTE PASO</small>
+          <strong>Disciplina en progreso</strong>
+
+          <span id="hold-hint">
+            Mantén presionado para entrar al dojo de aprendizaje.
+          </span>
+
+          <span class="hold-track">
+            <span id="hold-progress"></span>
+          </span>
+        </span>
+
+        <span class="launch-arrow">↗</span>
+      </button>
+
+      <p class="legal">La constancia convierte la práctica en camino.</p>
+    </section>
+
+    <section class="view learning-view" id="learning-view">
+      <div class="learning-header">
+        <button class="back" id="learning-home" type="button">← Volver al inicio</button>
+
+        <div class="eyebrow">— TU DOJO DE APRENDIZAJE</div>
+
+        <h2>Elige tu <em>camino.</em></h2>
+
+        <p class="sub">Explora, planifica y profundiza a tu propio ritmo.</p>
+      </div>
+
+      <div class="learning-layout">
+        <button
+          class="sidebar-toggle"
+          id="sidebar-toggle"
+          type="button"
+          aria-label="Mostrar u ocultar menú"
+          aria-expanded="true"
+        >
+          ☰ <span>Menú de aprendizaje</span>
+        </button>
+
+        <aside class="learning-sidebar" id="learning-sidebar">
+          <div class="sidebar-label">TU ESPACIO</div>
+
+          <button
+            class="side-link active"
+            type="button"
+            data-section="discipline-section"
+          >
+            <span class="side-icon">◈</span>
+            <span>¿Cuál es mi disciplina?</span>
+          </button>
+
+          <button
+            class="side-link"
+            type="button"
+            data-section="plan-section"
+          >
+            <span class="side-icon">▤</span>
+            <span>Plan de entrenamiento</span>
+          </button>
+
+          <button
+            class="side-link"
+            type="button"
+            data-section="deep-section"
+          >
+            <span class="side-icon">⌕</span>
+            <span>Profundización</span>
+          </button>
+
+          <div class="sidebar-note">DISCIPLINA · RESPETO · CONSTANCIA</div>
+        </aside>
+
+        <div class="learning-content">
+
+          <section class="learning-section active" id="discipline-section">
+            <div class="section-eyebrow">01 — DESCUBRIMIENTO</div>
+
+            <h3>¿Cuál es mi disciplina?</h3>
+
+            <p class="section-intro">
+              No existe un único camino. Encuentra las artes marciales que mejor
+              conecten con tus intereses y objetivos.
+            </p>
+
+            <div class="quiz-progress">
+              <span id="quiz-step-label">PREGUNTA 1 DE 6</span>
+
+              <div class="progress-track">
+                <span id="quiz-progress-bar"></span>
+              </div>
+            </div>
+
+            <div id="quiz-container">
+              <h4 id="quiz-question">¿Qué te gustaría conseguir principalmente?</h4>
+
+              <p id="quiz-hint" class="muted-copy">
+                Elige la opción que más se acerque a tus intereses.
+              </p>
+
+              <div id="quiz-options" class="quiz-options"></div>
+
+              <div class="quiz-actions">
+                <button class="secondary compact" id="quiz-back" type="button" disabled>
+                  ← Anterior
+                </button>
+
+                <button class="primary compact" id="quiz-next" type="button" disabled>
+                  Siguiente →
+                </button>
+              </div>
+            </div>
+
+            <div id="quiz-result" class="result-card" hidden>
+              <div class="result-kicker">— TU PERFIL MARCIAL</div>
+
+              <h4 id="result-title"></h4>
+
+              <p id="result-description"></p>
+
+              <div id="result-tags" class="tag-list"></div>
+
+              <h5>Otras disciplinas que podrían encajar contigo</h5>
+
+              <div id="result-alternatives"></div>
+
+              <p class="safety-note">
+                Esta recomendación es orientativa. Antes de comenzar, considera
+                tu salud, la supervisión de un instructor cualificado y las
+                condiciones de seguridad de cada disciplina.
+              </p>
+
+              <div class="quiz-actions">
+                <button class="secondary compact" id="quiz-restart" type="button">
+                  ↻ Repetir test
+                </button>
+
+                <button class="primary compact" id="use-recommendation" type="button">
+                  Crear mi plan →
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section class="learning-section" id="plan-section">
+            <div class="section-eyebrow">02 — PRÁCTICA PERSONALIZADA</div>
+
+            <h3>Plan de entrenamiento</h3>
+
+            <p class="section-intro">
+              Diseña una planificación progresiva de cuatro semanas según tu
+              disciplina, experiencia, disponibilidad, equipamiento y objetivos.
+            </p>
+
+            <div class="spotify-box">
+              <div class="spotify-heading">
+                <span class="spotify-icon">♫</span>
+
+                <div>
+                  <strong>Tu música, tu ritmo</strong>
+                  <small>Spotify · Reproductor integrado</small>
+                </div>
+              </div>
+
+              <form id="spotify-form" class="spotify-form">
+                <label for="spotify-url">
+                  Enlace de canción, álbum o lista de Spotify
+                </label>
+
+                <div class="search-row">
+                  <input
+                    id="spotify-url"
+                    type="url"
+                    placeholder="https://open.spotify.com/playlist/..."
+                    required
+                  >
+
+                  <button class="primary compact" type="submit">
+                    Reproducir
+                  </button>
+                </div>
+              </form>
+
+              <div id="spotify-player" class="spotify-player">
+                <p class="muted-copy">
+                  Pega un enlace de Spotify para cargar el reproductor.
+                </p>
+              </div>
+            </div>
+
+            <form id="training-form" class="plan-controls">
+              <div class="field field-full">
+                <label for="plan-discipline">Arte marcial o deporte</label>
+
+                <select id="plan-discipline" name="discipline" required>
+                  <option value="">Cargando disciplinas...</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="plan-level">Nivel de experiencia</label>
+
+                <select id="plan-level" name="level" required>
+                  <option value="basic">Principiante</option>
+                  <option value="intermediate">Intermedio</option>
+                  <option value="advanced">Avanzado</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="plan-days">Días disponibles por semana</label>
+
+                <select id="plan-days" name="days" required>
+                  <option value="2">2 días</option>
+                  <option value="3" selected>3 días</option>
+                  <option value="4">4 días</option>
+                  <option value="5">5 días</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="plan-duration">Duración por sesión</label>
+
+                <select id="plan-duration" name="duration" required>
+                  <option value="20">20 minutos</option>
+                  <option value="30">30 minutos</option>
+                  <option value="45" selected>45 minutos</option>
+                  <option value="60">60 minutos</option>
+                  <option value="75">75 minutos</option>
+                  <option value="90">90 minutos</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="plan-equipment">Equipamiento disponible</label>
+
+                <select id="plan-equipment" name="equipment" required>
+                  <option value="none">Sin material</option>
+                  <option value="basic">Material básico</option>
+                  <option value="bag">Saco o equipo específico</option>
+                </select>
+              </div>
+
+              <div class="field field-full">
+                <label for="plan-goal">Objetivo principal</label>
+
+                <select id="plan-goal" name="goal" required>
+                  <option value="technique">Aprender y mejorar técnica</option>
+                  <option value="fitness">Mejorar condición física</option>
+                  <option value="mobility">Movilidad y coordinación</option>
+                  <option value="discipline">Constancia y disciplina</option>
+                </select>
+              </div>
+
+              <div class="field field-full plan-actions">
+                <button
+                  class="primary generate-plan"
+                  id="generate-plan"
+                  type="submit"
+                >
+                  ✳ Generar mi plan
+                </button>
+
+                <button
+                  class="secondary"
+                  id="generate-variant"
+                  type="button"
+                  disabled
+                >
+                  ↻ Generar otra variante
+                </button>
+              </div>
+            </form>
+
+            <div
+              id="training-output"
+              class="plan-output"
+              aria-live="polite"
+              aria-busy="false"
+            >
+              <div class="empty-state">
+                <span>道</span>
+                <h4>Tu entrenamiento comienza aquí</h4>
+                <p>
+                  Selecciona tus preferencias y genera una propuesta adaptada
+                  a tu nivel.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section class="learning-section" id="deep-section">
+            <div class="section-eyebrow">03 — INVESTIGACIÓN</div>
+
+            <h3>Profundización</h3>
+
+            <p class="section-intro">
+              Busca un arte marcial, técnica, escuela o concepto. Explora
+              vídeos, información y una guía inicial de técnicas.
+            </p>
+
+            <form id="deep-search-form" class="deep-search">
+              <label for="deep-query">¿Qué quieres investigar?</label>
+
+              <div class="search-row">
+                <input
+                  id="deep-query"
+                  name="query"
+                  placeholder="Ej. fundamentos del judo, historia del karate..."
+                  required
+                >
+
+                <button class="primary compact" type="submit">
+                  Buscar ↗
+                </button>
+              </div>
+            </form>
+
+            <div id="deep-results" class="deep-results" aria-live="polite">
+              <article class="deep-card">
+                <div class="deep-card-icon">▷</div>
+                <h4>Vídeos de YouTube</h4>
+                <p>
+                  Busca demostraciones, clases y explicaciones relacionadas
+                  con tu tema.
+                </p>
+              </article>
+
+              <article class="deep-card">
+                <div class="deep-card-icon">⌕</div>
+                <h4>Información general</h4>
+                <p>
+                  Explora contexto, historia y conceptos fundamentales.
+                </p>
+              </article>
+
+              <article class="deep-card">
+                <div class="deep-card-icon">◈</div>
+                <h4>Técnicas paso a paso</h4>
+                <p>
+                  Consulta guías introductorias y conceptos para estudiar
+                  con seguridad.
+                </p>
+              </article>
+            </div>
+
+            <div class="martial-lab" id="martial-lab">
+
+              <div class="section-heading">
+                <div class="section-heading-main">
+                  <div class="eyebrow">— APRENDE EXPLORANDO</div>
+
+                  <h3>Laboratorio marcial</h3>
+
+                  <p>
+                    Organiza tus prácticas, descubre rutas de aprendizaje
+                    y explora las conexiones entre disciplinas.
+                  </p>
+                </div>
+              </div>
+
+              <div class="lab-grid">
+
+                <article class="lab-card">
+                  <span class="lab-number">01</span>
+
+                  <h4>Diario de práctica</h4>
+
+                  <p>
+                    Registra tus sesiones y conserva un historial ordenado
+                    mediante nodos enlazados.
+                  </p>
+
+                  <form id="lab-history-form" class="lab-form">
+                    <input
+                      id="lab-history-input"
+                      type="text"
+                      maxlength="100"
+                      placeholder="Ej. Practiqué desplazamientos"
+                      aria-label="Descripción de la práctica"
+                      required
+                    >
+
+                    <button class="primary" type="submit">
+                      Registrar
+                    </button>
+                  </form>
+
+                  <div
+                    id="lab-history-list"
+                    class="lab-list"
+                    aria-live="polite"
+                  ></div>
+
+                  <button
+                    id="lab-history-clear"
+                    class="secondary"
+                    type="button"
+                  >
+                    Limpiar historial
+                  </button>
+                </article>
+
+                <article class="lab-card">
+                  <span class="lab-number">02</span>
+
+                  <h4>Temas recientes</h4>
+
+                  <p>
+                    Guarda temas de investigación y retira el último que
+                    añadiste. Funciona con el principio LIFO.
+                  </p>
+
+                  <form id="lab-stack-form" class="lab-form">
+                    <input
+                      id="lab-stack-input"
+                      type="text"
+                      maxlength="100"
+                      placeholder="Ej. Historia del karate"
+                      aria-label="Tema para guardar en la pila"
+                      required
+                    >
+
+                    <button class="primary" type="submit">
+                      Guardar
+                    </button>
+                  </form>
+
+                  <div
+                    id="lab-stack-list"
+                    class="lab-list"
+                    aria-live="polite"
+                  ></div>
+
+                  <button
+                    id="lab-stack-pop"
+                    class="secondary"
+                    type="button"
+                  >
+                    Deshacer último tema
+                  </button>
+                </article>
+
+                <article class="lab-card">
+                  <span class="lab-number">03</span>
+
+                  <h4>Cola de práctica</h4>
+
+                  <p>
+                    Organiza técnicas pendientes y complétalas en el orden
+                    en que fueron añadidas. Funciona con FIFO.
+                  </p>
+
+                  <form id="lab-queue-form" class="lab-form">
+                    <input
+                      id="lab-queue-input"
+                      type="text"
+                      maxlength="100"
+                      placeholder="Ej. Guardia y desplazamiento"
+                      aria-label="Técnica pendiente"
+                      required
+                    >
+
+                    <button class="primary" type="submit">
+                      Añadir
+                    </button>
+                  </form>
+
+                  <div
+                    id="lab-queue-list"
+                    class="lab-list"
+                    aria-live="polite"
+                  ></div>
+
+                  <button
+                    id="lab-queue-next"
+                    class="secondary"
+                    type="button"
+                  >
+                    Completar siguiente técnica
+                  </button>
+                </article>
+
+                <article class="lab-card">
+                  <span class="lab-number">04</span>
+
+                  <h4>Ruta de aprendizaje</h4>
+
+                  <p>
+                    Explora una estructura jerárquica de conocimientos
+                    y fundamentos marciales.
+                  </p>
+
+                  <div
+                    id="lab-learning-tree"
+                    class="lab-tree"
+                  ></div>
+                </article>
+
+                <article class="lab-card">
+                  <span class="lab-number">05</span>
+
+                  <h4>Conexiones marciales</h4>
+
+                  <p>
+                    Selecciona una disciplina para explorar otras relacionadas
+                    por similitudes de práctica o enfoque.
+                  </p>
+
+                  <label for="lab-graph-select">
+                    Disciplina de partida
+                  </label>
+
+                  <select id="lab-graph-select">
+                    <option value="Karate">Karate</option>
+                    <option value="Judo">Judo</option>
+                    <option value="Taekwondo">Taekwondo</option>
+                    <option value="Jiu-jitsu brasileño">
+                      Jiu-jitsu brasileño
+                    </option>
+                    <option value="Boxeo">Boxeo</option>
+                    <option value="Muay thai">Muay thai</option>
+                    <option value="Aikido">Aikido</option>
+                  </select>
+
+                  <div
+                    id="lab-graph-results"
+                    class="lab-list"
+                    aria-live="polite"
+                  ></div>
+
+                  <p class="lab-note">
+                    Las conexiones son orientativas y no implican
+                    necesariamente un origen histórico común.
+                  </p>
+                </article>
+
+              </div>
+            </div>
+
+          </section>
+
+        </div>
+
+      </div>
+      
+    </section>
+    
+
+    <footer>
+      <span>© 2026 Martial Art Learning</span>
+      <span><i></i> DISEÑADO POR JUAN ESTEBAN JARAMILLO MONTES</span>
+    </footer>
+  </section>
+  
+</main>
+
+<script src="martial-arts-data.js"></script>
+<script src="discipline-engine.js"></script>
+<script src="training-engine.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "martialarts-learning-platform-es",
+  "version": "1.0.0",
+  "description": "Interfaz estática en español con identidad visual de dojo japonés contemporáneo.",
+  "main": "app.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juanejm/MartialArts-Learning-Platform-ES.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/juanejm/MartialArts-Learning-Platform-ES/issues"
+  },
+  "homepage": "https://github.com/juanejm/MartialArts-Learning-Platform-ES#readme",
+  "devDependencies": {
+    "vite": "^8.3.4"
+  }
+}
