@@ -1,3 +1,4 @@
+import os
 import hashlib
 import hmac
 import json
@@ -9,8 +10,8 @@ from urllib.parse import urlparse
 
 BASE_DIR = Path(__file__).resolve().parent
 DB_PATH = BASE_DIR / "martialarts.db"
-HOST = "127.0.0.1"
-PORT = 8000
+HOST = "0.0.0.0"
+PORT = int(os.environ.get("PORT", "10000"))
 
 sessions = {}
 
