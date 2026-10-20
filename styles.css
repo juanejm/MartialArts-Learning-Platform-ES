@@ -3848,3 +3848,40 @@ textarea:focus-visible {
     line-height: 1.45;
   }
 }
+/* MAI: estilos de las nuevas estructuras Trie y Max-Heap */
+.martial-lab #lab-trie-status,
+.martial-lab #lab-heap-status {
+  margin: 0.55rem 0 0.8rem;
+  overflow-wrap: anywhere;
+}
+
+.martial-lab #lab-trie-results,
+.martial-lab #lab-heap-list {
+  margin-top: 0.65rem;
+}
+
+.martial-lab #lab-heap-pop:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.martial-lab .lab-heap-form select {
+  flex: 0 1 145px;
+  min-width: 0;
+}
+
+@media (max-width: 600px) {
+  .martial-lab .lab-heap-form {
+    flex-wrap: wrap;
+  }
+
+  .martial-lab .lab-heap-form input {
+    flex-basis: 100%;
+  }
+
+  .martial-lab .lab-heap-form select {
+    flex: 1 1 0;
+  }
+}

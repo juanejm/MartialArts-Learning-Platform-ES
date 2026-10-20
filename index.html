@@ -771,6 +771,69 @@
                   </p>
                 </article>
 
+                <article class="lab-card">
+                  <span class="lab-number">06</span>
+                  <h4>Búsqueda por prefijo (Trie)</h4>
+                  <p>
+                    Busca disciplinas por las primeras letras de su nombre.
+                    Por ejemplo, escribe «kar» para explorar coincidencias.
+                  </p>
+
+                  <form id="lab-trie-form" class="lab-form">
+                    <input
+                      id="lab-trie-input"
+                      type="search"
+                      maxlength="60"
+                      placeholder="Ej. kar"
+                      aria-label="Prefijo para buscar disciplinas"
+                      autocomplete="off"
+                      required
+                    >
+                    <button class="primary" type="submit">Buscar</button>
+                  </form>
+
+                  <p id="lab-trie-status" class="lab-note" aria-live="polite">
+                    Escribe un prefijo para comenzar.
+                  </p>
+                  <ul id="lab-trie-results" class="lab-list" aria-live="polite"></ul>
+                </article>
+
+                <article class="lab-card">
+                  <span class="lab-number">07</span>
+                  <h4>Prioridad de entrenamiento (Max-Heap)</h4>
+                  <p>
+                    Añade técnicas con prioridad del 1 al 5.
+                    El montículo mantiene la prioridad más alta en la raíz.
+                  </p>
+
+                  <form id="lab-heap-form" class="lab-form lab-heap-form">
+                    <input
+                      id="lab-heap-input"
+                      type="text"
+                      maxlength="100"
+                      placeholder="Ej. Defensa de derribo"
+                      aria-label="Nombre de la técnica"
+                      required
+                    >
+                    <select id="lab-heap-priority" aria-label="Prioridad de la técnica">
+                      <option value="1">Prioridad 1</option>
+                      <option value="2">Prioridad 2</option>
+                      <option value="3" selected>Prioridad 3</option>
+                      <option value="4">Prioridad 4</option>
+                      <option value="5">Prioridad 5</option>
+                    </select>
+                    <button class="primary" type="submit">Añadir</button>
+                  </form>
+
+                  <p id="lab-heap-status" class="lab-note" aria-live="polite">
+                    La prioridad más alta se completa primero.
+                  </p>
+                  <ul id="lab-heap-list" class="lab-list" aria-live="polite"></ul>
+                  <button id="lab-heap-pop" class="secondary" type="button">
+                    Completar prioridad máxima
+                  </button>
+                </article>
+
               </div>
             </div>
 

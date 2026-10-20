@@ -2627,6 +2627,255 @@ console.info("MAI: interfaz inicializada correctamente.");
       : maiLabEmpty("No se encontraron conexiones.");
   }
 
+  // =====================================================
+  // 06. TRIE: búsqueda de disciplinas por prefijo
+  // =====================================================
+
+  function maiNormalizeText(value) {
+    return String(value ?? "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLocaleLowerCase()
+      .trim();
+  }
+
+  class MAIPrefixTrieNode {
+    constructor() {
+      this.children = new Map();
+      this.words = [];
+    }
+  }
+
+  class MAIPrefixTrie {
+    constructor() {
+      this.root = new MAIPrefixTrieNode();
+    }
+
+    insert(word) {
+      const original = String(word ?? "").trim();
+      const normalized = maiNormalizeText(original);
+      if (!normalized) return;
+
+      let node = this.root;
+
+      for (const character of normalized) {
+        if (!node.children.has(character)) {
+          node.children.set(character, new MAIPrefixTrieNode());
+        }
+        node = node.children.get(character);
+        if (!node.words.includes(original)) node.words.push(original);
+      }
+    }
+
+    search(prefix) {
+      const normalized = maiNormalizeText(prefix);
+      if (!normalized) return [];
+
+      let node = this.root;
+
+      for (const character of normalized) {
+        node = node.children.get(character);
+        if (!node) return [];
+      }
+
+      return [...node.words].sort((a, b) => a.localeCompare(b, "es"));
+    }
+  }
+
+  const maiDisciplineTrie = new MAIPrefixTrie();
+
+  (Array.isArray(window.MAI_DISCIPLINES) ? window.MAI_DISCIPLINES : [])
+    .forEach((discipline) => {
+      if (discipline && discipline.name) {
+        maiDisciplineTrie.insert(discipline.name);
+      }
+    });
+
+  function renderMAITrie() {
+    const input = $("#lab-trie-input");
+    const results = $("#lab-trie-results");
+    const status = $("#lab-trie-status");
+
+    if (!input || !results || !status) return;
+
+    const prefix = input.value.trim();
+
+    if (!prefix) {
+      results.innerHTML = "";
+      maiLabShowMessage(status, "Escribe un prefijo para comenzar.");
+      return;
+    }
+
+    const matches = maiDisciplineTrie.search(prefix);
+
+    results.innerHTML = matches.length
+      ? matches.map((name) => maiLabEntry(name, "Coincidencia por prefijo")).join("")
+      : maiLabEmpty("No hay disciplinas que comiencen con ese prefijo.");
+
+    maiLabShowMessage(
+      status,
+      matches.length === 1
+        ? "Se encontró 1 disciplina."
+        : `Se encontraron ${matches.length} disciplinas.`
+    );
+  }
+
+  maiLabListen("#lab-trie-input", "input", renderMAITrie);
+
+  maiLabListen("#lab-trie-form", "submit", (event) => {
+    event.preventDefault();
+    renderMAITrie();
+  });
+
+  // =====================================================
+  // 07. MAX-HEAP: técnicas ordenadas por prioridad
+  // =====================================================
+
+  class MAIMaxHeap {
+    constructor() {
+      this.items = [];
+      this.nextId = 1;
+    }
+
+    size() {
+      return this.items.length;
+    }
+
+    peek() {
+      return this.items[0] ?? null;
+    }
+
+    insert(name, priority) {
+      const item = {
+        id: this.nextId++,
+        name: String(name).trim(),
+        priority: Number(priority)
+      };
+
+      this.items.push(item);
+      this.bubbleUp(this.items.length - 1);
+      return item;
+    }
+
+    bubbleUp(index) {
+      while (index > 0) {
+        const parent = Math.floor((index - 1) / 2);
+
+        if (this.items[parent].priority >= this.items[index].priority) {
+          break;
+        }
+
+        [this.items[parent], this.items[index]] =
+          [this.items[index], this.items[parent]];
+
+        index = parent;
+      }
+    }
+
+    extractMax() {
+      if (this.items.length === 0) return null;
+      if (this.items.length === 1) return this.items.pop();
+
+      const maximum = this.items[0];
+      this.items[0] = this.items.pop();
+      this.sinkDown(0);
+
+      return maximum;
+    }
+
+    sinkDown(index) {
+      const length = this.items.length;
+
+      while (true) {
+        const left = index * 2 + 1;
+        const right = index * 2 + 2;
+        let largest = index;
+
+        if (
+          left < length &&
+          this.items[left].priority > this.items[largest].priority
+        ) {
+          largest = left;
+        }
+
+        if (
+          right < length &&
+          this.items[right].priority > this.items[largest].priority
+        ) {
+          largest = right;
+        }
+
+        if (largest === index) break;
+
+        [this.items[index], this.items[largest]] =
+          [this.items[largest], this.items[index]];
+
+        index = largest;
+      }
+    }
+  }
+
+  const maiTrainingHeap = new MAIMaxHeap();
+
+  function renderMAIHeap() {
+    const list = $("#lab-heap-list");
+    const status = $("#lab-heap-status");
+    const popButton = $("#lab-heap-pop");
+
+    if (!list || !status) return;
+
+    list.innerHTML = maiTrainingHeap.items.length
+      ? maiTrainingHeap.items.map((item, index) =>
+          maiLabEntry(
+            `${item.name} — prioridad ${item.priority}`,
+            `Posición ${index + 1} del montículo binario`
+          )
+        ).join("")
+      : maiLabEmpty("Todavía no hay técnicas en el montículo.");
+
+    const maximum = maiTrainingHeap.peek();
+
+    maiLabShowMessage(
+      status,
+      maximum
+        ? `Prioridad máxima actual: ${maximum.priority} — ${maximum.name}.`
+        : "La prioridad más alta se completa primero."
+    );
+
+    if (popButton) popButton.disabled = maiTrainingHeap.size() === 0;
+  }
+
+  maiLabListen("#lab-heap-form", "submit", (event) => {
+    event.preventDefault();
+
+    const input = $("#lab-heap-input");
+    const prioritySelect = $("#lab-heap-priority");
+    if (!input || !prioritySelect) return;
+
+    const name = input.value.trim();
+    const priority = Number(prioritySelect.value);
+
+    if (!name || !Number.isInteger(priority) || priority < 1 || priority > 5) {
+      return;
+    }
+
+    maiTrainingHeap.insert(name, priority);
+    input.value = "";
+    input.focus();
+    renderMAIHeap();
+  });
+
+  maiLabListen("#lab-heap-pop", "click", () => {
+    const completed = maiTrainingHeap.extractMax();
+    renderMAIHeap();
+
+    if (completed) {
+      maiLabShowMessage(
+        $("#lab-heap-status"),
+        `Técnica completada: ${completed.name} (prioridad ${completed.priority}).`
+      );
+    }
+  });
   renderMAIGraphOptions();
 
   maiLabListen("#lab-graph-select", "change", renderMAIGraph);
@@ -2638,6 +2887,8 @@ console.info("MAI: interfaz inicializada correctamente.");
     renderMAIStack();
     renderMAIQueue();
     renderMAITree();
+    renderMAITrie();
+    renderMAIHeap();
     renderMAIGraphOptions();
     renderMAIGraph();
   }
